@@ -15,5 +15,11 @@ namespace NUnitForTesters.Test.Services
         {
             StringAssert.IsMatch("This method should timeout", WeirdService.ThisMethodWillTimeout());
         }
+
+        [Test]
+        public void ThisMethodWillThrowExceptionIfParameterIsZero([Range(0, 10)] int parameter)
+        {
+            Assert.That(WeirdService.ThisMethodWillThrowExceptionIfParameterIsZero(parameter), Is.EqualTo(100 / parameter).Within(0.1));
+        }
 	}
 }
