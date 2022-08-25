@@ -9,6 +9,11 @@ namespace NUnitForTesters.Test.Services
 {
     public class WeirdServiceTests
     {
-
-    }
+        [Test]
+        [Timeout(2000)]
+        public void ThisMethodWillTimeoutTest()
+        {
+            StringAssert.IsMatch("This method should timeout", WeirdService.ThisMethodWillTimeout());
+        }
+	}
 }
