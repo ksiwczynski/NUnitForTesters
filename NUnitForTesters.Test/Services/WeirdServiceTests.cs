@@ -21,5 +21,12 @@ namespace NUnitForTesters.Test.Services
         {
             Assert.That(WeirdService.ThisMethodWillThrowExceptionIfParameterIsZero(parameter), Is.EqualTo(100 / parameter).Within(0.1));
         }
+
+        [Test]
+        [Retry(5)]
+        public void ThisMethodWillPassSometimesTest()
+        {
+            Assert.That(WeirdService.ThisMethodWillPassSometimes(), Is.LessThan(1000));
+        }
 	}
 }
