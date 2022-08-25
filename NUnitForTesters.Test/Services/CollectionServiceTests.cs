@@ -18,16 +18,17 @@ namespace NUnitForTesters.Test.Services
 
         [Test]
         public void GetInitialsFromNamesCustomTest()
-        {
-            var customNames = new List<string> { "Konrad Siwczyński", "Przemysław Kardas" };
-            var initials = new List<string> { "KS", "PK" };
+		{
+			var customNames = new List<string> { "Konrad Siwczyński", "Przemysław Kardas" };
 
-            var service = new CollectionService(customNames);
+			var service = new CollectionService(customNames);
+
+            var initials = service.GetInitialsFromNames();
 
             Assert.Multiple(() =>
             {
-                Assert.That(customNames.Count, Is.EqualTo(initials.Count));
-                CollectionAssert.AreEqual(initials, service.GetInitialsFromNames());
+                Assert.That(initials.Count, Is.EqualTo(customNames.Count));
+                CollectionAssert.AreEqual(new List<string> { "KS", "PK" }, initials);
             });
         }
 	}
